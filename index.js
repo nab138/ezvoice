@@ -13,9 +13,6 @@ const {
     VoiceReceiver,
     AudioPlayer,
 } = require('@discordjs/voice');
-const {
-    VoiceChannel
-} = require('discord.js')
 const { createWriteStream } = require('fs');
 const { opus } = require('prism-media');
 const { pipeline } = require('stream');
@@ -85,7 +82,7 @@ async function tts(text, message, callback){
 
 /**
  * Join a voice channel
- * @param {VoiceChannel} channel - channel to join
+ * @param {Object} channel - Discord.js Voice channel object, or object with properties id and guild.voiceAdapterCreator
  * @returns {VoiceConnection} - connection created by joining channel
  */
 async function connectToChannel(channel) {

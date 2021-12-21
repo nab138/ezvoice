@@ -146,7 +146,7 @@ function recordToFile(receiver, userID, filename, options){
     const opusStream = receiver.subscribe(userID, {
 		end: {
 			behavior: EndBehaviorType.AfterSilence,
-			duration: options?.silenceTimout ?? 500,
+			duration: options?.silenceTimout ?? 1000,
 		},
 	});
     const out = createWriteStream(filename);

@@ -19,9 +19,9 @@ client.once('ready', () => {
 });
 client.on('messageCreate', (message) => {
     if(!message.content.startsWith(prefix)) return
-    let command = string.slice(prefix.length)
+    let command = message.content.slice(prefix.length)
     if(command == 'play'){
-        if(!message.member.voice.channel) return message.reply("I'm not in a voice channel!")
+        if(!message.member.voice.channel) return message.reply("You're not in a voice channel!")
         voice.play('./song.mp3', message.member.voice.channel) 
     }
 })
@@ -41,9 +41,9 @@ client.once('ready', () => {
 });
 client.on('messageCreate', (message) => {
     if(!message.content.startsWith(prefix)) return
-    let command = string.slice(prefix.length)
+    let command = message.content.slice(prefix.length)
     if(command == 'record'){
-        if(!message.member.voice.channel) return message.reply("I'm not in a voice channel!")
+        if(!message.member.voice.channel) return message.reply("You're not in a voice channel!")
         const connection = voice.connectToChannel(message.member.voice.channel)
         voice.recordToFile(connection.receiver, message.author.id, `${message.author.id}-recording.ogg`).then(() => {
             connection.destroy()
